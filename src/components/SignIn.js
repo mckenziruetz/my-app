@@ -31,7 +31,8 @@ function SignIn() {
         const result = await response.json();
         // Store the token in localStorage or manage the session state as needed
         localStorage.setItem('token', result.token);
-        navigate('/'); // Redirect to the home page or user dashboard
+        localStorage.setItem('userName', result.firstName);
+        navigate('/dashboard'); // Redirect to the home page or user dashboard
       } else {
         const result = await response.json();
         setError(result.message || 'Failed to sign in. Please try again.');

@@ -31,7 +31,9 @@ function SignUp() {
         });
 
         if(response.ok) {
-             navigate('/');
+             const data = await response.json();
+             localStorage.setItem('userName', formData.firstName);
+             navigate('/dashboard');
         } else {
             const result = await response.json();
             setError(result.message || 'Failed to sign up. Please try again.');

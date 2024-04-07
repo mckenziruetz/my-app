@@ -1,12 +1,13 @@
 import React from 'react';
+import DashboardHeader from '../components/DashboardHeader';
 
 const Dashboard = () => {
-  // Dashboard will likely require state and effect hooks to fetch and display user-specific data.
+  const userName = localStorage.getItem('userName');
+
   return (
     <div>
-      <h2>Dashboard</h2>
+      <DashboardHeader userName={userName} />
       <p>Welcome to your dashboard. Here you can manage your mortgages, view your documents, and monitor your payments.</p>
-      // Interactive dashboard elements go here.
     </div>
   );
 };

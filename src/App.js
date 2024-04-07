@@ -8,6 +8,7 @@ import SignIn from './components/SignIn';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import DashboardHeader from './components/DashboardHeader';
 import './App.css';
 
 const App = () => {
