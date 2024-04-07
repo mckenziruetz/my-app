@@ -1,8 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/ChainCasa_Logo.png';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    localStorage.removeItem('userName');
+    localStorage.removeItem('token');
+    navigate('/');
+  };
+
   return (
     <nav>
       <div className="navbar-brand">
@@ -15,7 +23,7 @@ const Navbar = () => {
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/signup">Sign Up</Link>
         <Link to="/signin">Sign In</Link>
-        <Link to="/signout">Sign Out</Link>
+        <button onClick={handleSignOut}>Sign Out</button>
       </div>
     </nav>
   );

@@ -6,6 +6,6 @@ const Navbar = () => {
   const signOut = () => {
     localStorage.removeItem('userName');
     localStorage.removeItem('userToken'); // Remove if you're storing the token
-    navigate('/signin'); // Redirect to the sign-in page
+    navigate('/'); // Redirect to the sign-in page
   };
 }
