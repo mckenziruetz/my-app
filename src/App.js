@@ -9,6 +9,8 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import DashboardHeader from './components/DashboardHeader';
+import Listings from './pages/Listings';
+import ListingDetail from './pages/ListingDetail';
 import './App.css';
 
 const App = () => {
@@ -20,9 +22,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/signup" element={<SignUp />} /> {/* Corrected */}
-          <Route path="/signin" element={<SignIn />} /> {/* Corrected */}
+          <Route path="/signup" element={<SignUp />} /> 
+          <Route path="/signin" element={<SignIn />} /> 
           <Route path="*" element={<NotFound />} />
+          <Route path="/listings" element={<Listings />} />
+          <Route path="/listing/:listingId" element={<ListingDetail />} /> 
         </Routes>
         <Footer />
       </div>
