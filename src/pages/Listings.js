@@ -9,7 +9,7 @@ const ListingsPage = () => {
     const fetchListings = async () => {
       setLoading(true);
       try {
-        const response = await fetch('/api/listings'); // need to create endpoints
+        const response = await fetch('/api/listings'); 
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         setListings(data);
@@ -32,11 +32,11 @@ const ListingsPage = () => {
       {listings.length > 0 ? (
         <ul>
           {listings.map((listing) => (
-            <li key={listing.id}>
-              <img src={listing.imageUrl} alt={listing.title} />
+            <li key={listing._id}>
+              <img src={listing.images} alt={listing.title} />
               <h2>{listing.title}</h2>
               <p>Asking Price: {listing.price}</p>
-              <a href={`/listings/${listing.id}`}>View Listing</a>
+              <a href={`/listings/${listing._id}`}>View Listing</a>
             </li>
           ))}
         </ul>

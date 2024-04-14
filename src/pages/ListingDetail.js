@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const ListingDetailPage = ({ match }) => {
   const [listing, setListing] = useState(null);
@@ -7,7 +8,7 @@ const ListingDetailPage = ({ match }) => {
   const [offer, setOffer] = useState('');
 
   // Extract listing ID from the URL
-  const { listingId } = match.params;
+  const { listingId } = useParams();
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -38,15 +39,14 @@ const ListingDetailPage = ({ match }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Include the Authorization header with the token if needed
-          // 'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // Uncomment?
         },
         body: JSON.stringify({ offer })
       });
       if (!response.ok) throw new Error('Failed to submit offer');
       const result = await response.json();
       alert('Offer submitted: ' + result.message);
-      // Redirect ?
+      // Add logic to handle the result
     } catch (error) {
       alert('Error submitting offer: ' + error.message);
     }
@@ -59,7 +59,7 @@ const ListingDetailPage = ({ match }) => {
   return (
     <div>
       <h1>{listing.title}</h1>
-      <img src={listing.imageUrl} alt={listing.title} />
+      <img src={listing.images} alt={listing.title} />
       <p>Description: {listing.description}</p>
       <p>Asking Price: {listing.price}</p>
 

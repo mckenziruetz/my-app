@@ -18,7 +18,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    const backendUrl = process.env.REACT_APP_BACKEND_URL + '/users/signup';
+    const backendUrl = process.env.REACT_APP_BACKEND_URL + '/api/users/signup';
 
     try {
         // Make a POST request to the backend with the form data

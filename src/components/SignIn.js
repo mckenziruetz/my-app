@@ -16,8 +16,8 @@ function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(''); // Clear any previous errors
-    const backendUrl = process.env.REACT_APP_BACKEND_URL + '/users/signin';
-
+    const backendUrl = process.env.REACT_APP_BACKEND_URL + '/api/users/signin';
+  
     try {
       const response = await fetch(backendUrl, {
         method: 'POST',
@@ -26,13 +26,20 @@ function SignIn() {
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (response.ok) {
         const result = await response.json();
-        // Store the token in localStorage or manage the session state as needed
+        // Store the token and user role in localStorage or manage the session state as needed
         localStorage.setItem('token', result.token);
+        localStorage.setItem('role', result.role); // Assuming the role is part of the response
         localStorage.setItem('userName', result.firstName);
-        navigate('/dashboard'); // Redirect to the home page or user dashboard
+        
+        // Redirect based on role
+        if(result.role === 'admin') {
+          navigate('/admin'); // Redirect to the admin dashboard
+        } else {
+          navigate('/dashboard'); // Redirect to the user dashboard
+        }
       } else {
         const result = await response.json();
         setError(result.message || 'Failed to sign in. Please try again.');
