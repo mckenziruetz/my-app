@@ -31,10 +31,10 @@ function SignIn() {
         const result = await response.json();
         // Store the token and user role in localStorage or manage the session state as needed
         localStorage.setItem('token', result.token);
-        localStorage.setItem('role', result.role); // Assuming the role is part of the response
+        localStorage.setItem('role', result.role);
         localStorage.setItem('userName', result.firstName);
         
-        // Redirect based on role
+        // Redirect based on role - could not get Admin authorization working
         if(result.role === 'admin') {
           navigate('/admin'); // Redirect to the admin dashboard
         } else {

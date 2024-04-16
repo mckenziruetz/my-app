@@ -12,7 +12,7 @@ const AddListingForm = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // Handle form input changes including files
+  // Handle form input changes including files - this page works but form submission does not work always
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
@@ -41,30 +41,28 @@ const AddListingForm = () => {
     }
 
     try {
-      // Adjust
       const response = await fetch('/api/listings', {
         method: 'POST',
-        // Do not set Content-Type header for FormData
         body: formData,
       });
 
       if (!response.ok) {
-        // If the server responds with a status code that is not a success code (e.g., 200), throw an error
+        // If the server responds with a status code that is not a success code (200), throw an error
         const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to create listing.');
       }
 
-      // Assuming the server returns the created listing, you might want to handle it here
+      // Could not get create listing working properly
       const createdListing = await response.json();
       
-      // Reset form and navigate to dashboard or listings page
+      // Reset form and navigate to dashboard page
       setForm({
         title: '',
         description: '',
         price: '',
         image: null,
       });
-      navigate('/dashboard'); // Update the navigate path as needed
+      navigate('/dashboard');
     } catch (error) {
       setError(error.message);
     } finally {
@@ -76,7 +74,7 @@ const AddListingForm = () => {
   return (
     <form onSubmit={handleSubmit} encType="multipart/form-data">
       <h2>Add New Listing</h2>
-      {/* Other form fields */}
+      {/* Other fiels? */}
       <div>
         <label htmlFor="image">Image:</label>
         <input

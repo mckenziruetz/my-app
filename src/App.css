@@ -50,17 +50,17 @@ nav {
 }
 
 .navbar-brand h1 {
-  margin-left: 0.5rem; /* Adjust the space between the logo and the title as needed */
+  margin-left: 0.5rem;
 }
 
 .navbar-brand img {
-  height: 100px; /* Adjust the size of the logo as needed */
+  height: 100px; 
 }
 
 .navbar-links a {
-  margin-left: 20px; /* Adjust link spacing as needed */
-  text-decoration: none; /* Optional: Removes the underline from links */
-  color: black; /* Or any color you prefer */
+  margin-left: 20px; 
+  text-decoration: none; 
+  color: black; 
 }
 
 /* Responsive design for smaller screens */

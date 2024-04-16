@@ -40,8 +40,7 @@ const Admin = () => {
         if (error.message === 'Not authorized as admin') {
           navigate('/signin');
         } else {
-          // Handle other errors, like network problems, here.
-          // Maybe show an error message to the user.
+          // show an error message to the user - could not get admin auth working
         }
       } finally {
         if (mounted) {
@@ -59,7 +58,7 @@ const Admin = () => {
   }, [navigate]);
 
   if (isLoading) {
-    return <div>Loading...</div>; // Or some loading spinner
+    return <div>Loading...</div>;
   }
 
   return (
@@ -68,7 +67,7 @@ const Admin = () => {
         <div>
           <h1>Admin Dashboard</h1>
           <Link to="/admin/add-listing">Add Listing</Link>
-          {/* Add other admin links or functionalities */}
+          {/* Add other admin links or functionalities.. */}
         </div>
       ) : (
         <p>You are not authorized to view this page</p>
